@@ -1,7 +1,7 @@
-steak = input().split("do you like steak? ")
+steak = input("do you like steak? ")
 
 if steak == "yes":
-    cookness = input().split("do you like it rare, medium rare, medium, well done? ")
+    cookness = input("do you like it rare, medium rare, medium, well done? ")
     if cookness == "rare":
         print("you are disgusting")
     elif cookness == "medium rare":
