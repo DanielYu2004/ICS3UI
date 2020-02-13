@@ -10,5 +10,7 @@ if steak == "yes":
         print("you are not a garbage human being")
     elif cookness == "welldone":
         print("you are a garbage human being")
+    else:
+        print("you messed up")
 else:
     print("you should try a steak.")
