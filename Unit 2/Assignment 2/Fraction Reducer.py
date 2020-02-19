@@ -4,7 +4,6 @@ print("***********************************")
 def EuclideanAlgo(bigger, smaller):    
     if bigger % smaller == 0:
         return(smaller)
-    
     elif bigger > 0 and smaller > 0:
         return(EuclideanAlgo(smaller, bigger % smaller))
 
@@ -17,6 +16,8 @@ while True:
         print("This fraction is undefined.")
     elif numerator == 0:
         print(str(numerator) + "/" + str(denominator) ,"=","0")
+    elif numerator < 0 and denominator < 0:
+        print("Sorry, this program only handles non-negative numerators and non-negative denominators.")
     elif numerator < 0:
         print("Sorry, this program only handles non-negative numerators.")
     elif denominator < 0:
