@@ -7,7 +7,6 @@ elif b< 0:
     bOutput = str(b)
 else:
     bOutput = ""
-
 if m == 0:
     mOutput = ""
     bOutput = str(b)
