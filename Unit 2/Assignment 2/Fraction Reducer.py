@@ -21,7 +21,7 @@ while True:
     elif numerator < 0:
         print("Sorry, this program only handles non-negative numerators.")
     elif denominator < 0:
-        print("Sorry, this program only handles non-negative denominator.")
+        print("Sorry, this program only handles non-negative denominators.")
     else:
         GCD = (EuclideanAlgo(max(numerator, denominator), min(numerator, denominator)))
         if denominator / GCD == 1:
