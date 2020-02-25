@@ -105,12 +105,13 @@ elif power == 2:
 
         #To catch any empty strings when parcing the quadratic.
         if a == "":
-            a = 0
+            a = 1
         if b == "":
             b = 0
         if c == "":
             c = 0
 
+        #Turn the numbers from strings to floats for 
         a = float(a)
         b = float(b)
         c = float(c)
