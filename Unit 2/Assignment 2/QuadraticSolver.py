@@ -26,7 +26,7 @@ elif power < 1:
 #Handling polynomial of degree 2
 elif power == 2:
 
-    #Quadratic Input
+    #Quadratic input as a string
     quadratic = input("Please enter your quadratic in the form ax^2+bx+c=0 (eg: -5x^2-4x+3=0): ")
 
     #To check if the quadratic input is a quadratic

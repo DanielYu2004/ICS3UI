@@ -15,10 +15,11 @@ playAgain = "y"
 while 0 < balance < 1000 and playAgain in ["yes", "YES", "Yes", "y", "Y", "sure"]:
     bet = int(input( "Enter your bet: $"))
 
-    while bet < 0:
+    while bet < 0 or bet > balance:
         print("Cheater!")
         bet = int(input( "Enter your bet: $"))
-        
+    
+
 
     die1 = randint(1,6) #GET TWO RANDOM DIE ROLLS. THE randint() COMMAND PICKS A RANDOM INTEGER BETWEEN TWO GIVEN VALUES, IN THIS CASE, 1 AND 6
     die2 = randint(1,6)
