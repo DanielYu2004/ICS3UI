@@ -22,16 +22,16 @@ while playAgain == "y":
     elapsedTime = 0
     startTime = time()
 
-    while q < 10 and elapsedTime < 20.0:
-        x = randint(1, 30)
-        y = randint(1, 30)
+    while q < 10 and elapsedTime < 30.0:
+        x = randint(10, 30)
+        y = randint(10, 30)
         
-        rightAnswer = x + y
-        userGuess = int(input(str(x) + " + " + str(y)+ " = "))
+        rightAnswer = x * y
+        userGuess = int(input(str(x) + " x " + str(y)+ " = "))
         
-        while userGuess != rightAnswer and elapsedTime < 20.0:
+        while userGuess != rightAnswer and elapsedTime < 30.0:
             print("Nope! Try again.")
-            userGuess = int(input(str(x) + " + " + str(y)+ " = "))
+            userGuess = int(input(str(x) + " x " + str(y)+ " = "))
             elapsedTime = time() - startTime #Updating the time before giving them another try
             
         if userGuess == rightAnswer:
@@ -39,14 +39,14 @@ while playAgain == "y":
         
         elapsedTime = time() - startTime #Updating the time before telling them how long they have left
         
-        if 10 < elapsedTime < 20.0 and q < 10:
-            timeLeft = 20 - elapsedTime
+        if 10 < elapsedTime < 30.0 and q < 10:
+            timeLeft = 30 - elapsedTime
             print("\nYou have", round(timeLeft, 1), "seconds left!  Hurry!")
 
 
     if q == 10:
-        if elapsedTime < 20.0:
-            timeLeft = 20 - elapsedTime
+        if elapsedTime < 30.0:
+            timeLeft = 30 - elapsedTime
             print("You made it, with", round(timeLeft, 1), "seconds to spare!")
             
         else:
