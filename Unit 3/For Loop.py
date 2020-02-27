@@ -27,4 +27,3 @@ def fiboBad(n):
     else:
         
         return(fiboBad(n-1) + fiboBad(n-2))
-
