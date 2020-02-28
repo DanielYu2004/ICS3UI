@@ -1,15 +1,20 @@
+#Daniel Yu
+#ICS4UI
+#Fraction Reducer
+
+
 #Introduction   
 print("Welcome to Daniel's Fraction Reducer")
 print("***********************************")
 
-#Function for Euclidean Algorithm
+#Function for Euclidean Algorithm, with parameters for a bigger number and smaller number
 def EuclideanAlgo(bigger, smaller): 
 
-    #Base case for when we find the GCF
+    #Base case in recursive function for when we find the GCF 
     if bigger % smaller == 0:
         return(smaller)
 
-    #Rerun recursive function on variable smaller and bigger % smaller
+    #Rerun recursive function on variable (smaller) and (bigger % smaller) until we get base case
     elif bigger > 0 and smaller > 0:
         return(EuclideanAlgo(smaller, bigger % smaller))
 
@@ -52,8 +57,11 @@ while True:
             print("Here is your reduced fraction:")
             print(str(numerator) + "/" + str(denominator) ,"=",str(int(numerator/GCD)))
             print()
+        #If the GCD is 1, which means the fraction is already in reduced form
         elif GCD == 1:
             print(str(int(numerator/GCD)) +"/" + str(int(denominator/GCD)) , "is already in reduced form")
+        
+        #The fraction is reducable
         else:
             print("Here is your reduced fraction:")
             print(str(numerator) + "/" + str(denominator) ,"=",str(int(numerator/GCD)) +"/" + str(int(denominator/GCD)))
