@@ -33,12 +33,4 @@ screen.update()
 
 
 
-while True:
-    screen.create_polygon(200, 250, 200, 310, 300, 310, 300, 250, fill="#fff9eb", smooth=True, outline="black")
-    screen.create_oval(225, 255, 275, 305, fill="black")
-
-
-    screen.create_polygon(200 + 200, 250, 200 + 200, 310, 300 + 200, 310, 300 + 200, 250, fill="#fff9eb", smooth=True, outline="black")
-    screen.create_oval(225 + random.randint(190, 210), 255, 275 + random.randint(190, 210), fill="black")
-
 myInterface.mainloop()
