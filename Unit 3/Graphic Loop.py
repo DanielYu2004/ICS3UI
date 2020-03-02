@@ -17,20 +17,20 @@ screen.pack()
 
 
 #bottom left
-for line in range(10):
-    screen.create_line(0,350 - (line*35), 35  + (line*35), 0, fill="blue")
+for line in range(11):
+    screen.create_line(0,350 - (line*35), 35  + (line*35), 0, fill="blue", width="2")
 
 #top left
-for line in range(10):
-    screen.create_line(0,350 + (line*35), 35  + (line*35), 700, fill="blue")
+for line in range(11):
+    screen.create_line(0,350 + (line*35), 35  + (line*35), 700, fill="blue", width="2")
 
 #top right
-for line in range(10):
-    screen.create_line(350 + (line*35),0, 700 , 35 + (line*35), fill="blue")
+for line in range(11):
+    screen.create_line(350 + (line*35),0, 700 , 35 + (line*35), fill="blue", width="2")
 
 #bottom right
-for line in range(10):
-    screen.create_line(700, 350 + (line*35), 700  - (line*35), 700, fill="blue")
+for line in range(11):
+    screen.create_line(700, 350 + (line*35), 665  - (line*35), 700, fill="blue", width="2")
 
 
 
