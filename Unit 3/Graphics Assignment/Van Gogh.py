@@ -4,22 +4,26 @@ import random
 tk = Tk()
 
 
-length = 80
-maxdot = 8
-mindot = 4
+length = 80 #length and width of each 
+maxdot = 8 #max dot size
+mindot = 4 #min dot size
+colourBool = True #Boolean to alternate colours
 
+#Initialize screen
 screen = Canvas(tk, width=length*8, height=length*8, background="white")
 screen.pack()
 
-colourBool = True
-for column in range(8):
-    for row in range(8):
-        x1 = length*row
-        y1 = length*column
-        x2 = length*(row+1)
-        y2 = length*(column+1)
-        #screen.create_rectangle(x1,y1,x2,y2)
+#Loop for each square on checkerboard
+for row in range(8): #Loop for each row
+    for column in range(8): #Loop for each 8 squares in every row
 
+        x1 = length*column #Define top left x coordinate of square
+        y1 = length*row #Define top left y coordinate of square
+        x2 = length*(column+1) #Define bottom right x coordinate of square
+        y2 = length*(row+1) #Define bottom right y coordinate of square
+
+
+        #To alternate colours every time a square is created
         if colourBool == True:
             colourBool = False
             colour = "#654321"
@@ -27,13 +31,17 @@ for column in range(8):
             colourBool = True
             colour="#b5651d"
 
+        #Random dot generator
         for dot in range(100):
-            size = random.randint(mindot, maxdot)
 
-            dotx1 = random.randint(x1, x2-size) 
-            doty1 = random.randint(y1, y2-size)
+            size = random.randint(mindot, maxdot) #Choose random dot size
+
+            dotx1 = random.randint(x1, x2-size) #Define top left x coordinate of dot
+            doty1 = random.randint(y1, y2-size) #Define top left y coordinate of dot
+
             screen.create_rectangle(dotx1, doty1, dotx1 + size, doty1 + size, fill=colour)
 
+    #To alternate the starting colour at the start of each row
     if colourBool == True:
         colourBool = False
         colour = "#654321"
@@ -44,5 +52,5 @@ for column in range(8):
 
         
 
-screen.mainloop()
+screen.mainloop() #For visual studio
 
