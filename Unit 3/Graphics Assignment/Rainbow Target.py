@@ -6,7 +6,7 @@ tk = Tk()
 
 
 #Variables
-width = 600 #Width of screen
+width = 400 #Width of screen
 height = width #Height of screen
 xCenter = width/2 #X coordinate of center of circles
 yCenter = height/2 #Y coordinate of center of circles
@@ -19,8 +19,8 @@ x2 = x1 + diameter #X2 coordinate of ball
 y2 = y1 + diameter #Y2 coordinate of ball
 xBall = (x1 + x2)/2 #X coordinate of center of ball
 yBall = (y1 + y2)/2 #Y coordinate of center of ball
-xSpeed = 10 #X speed of ball
-ySpeed = 1 #Y speed of ball
+xSpeed = 5 #X speed of ball
+ySpeed = 5 #Y speed of ball
 
 colours = ["blue", "green", "red", "purple", "orange", "hot pink", "grey"] #Colour choices
 
@@ -38,9 +38,10 @@ while True:
 
     #To iterate for each target size and determine its colour based on the radius of the circle and the distance between the ball's center to the origin
     for circle in range(1,7):
-        radius = circle * 50
-        xDelta = xBall - 300
-        yDelta = yBall - 300
+
+        radius = circle * targetDist
+        xDelta = xBall - width/2
+        yDelta = yBall - width/2
         distance = math.sqrt(xDelta**2 + yDelta**2)
 
         if distance < radius:

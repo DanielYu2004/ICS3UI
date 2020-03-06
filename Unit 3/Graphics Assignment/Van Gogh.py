@@ -4,23 +4,24 @@ import random
 tk = Tk()
 
 
-length = 80 #length and width of each 
+length = 80 #length and width of each square
 maxdot = 8 #max dot size
 mindot = 4 #min dot size
 colourBool = True #Boolean to alternate colours
+excessSpace = 50
 
 #Initialize screen
-screen = Canvas(tk, width=length*8, height=length*8, background="white")
+screen = Canvas(tk, width=(length*8) + excessSpace, height=(length*8) + excessSpace, background="black")
 screen.pack()
 
 #Loop for each square on checkerboard
 for row in range(8): #Loop for each row
     for column in range(8): #Loop for each 8 squares in every row
 
-        x1 = length*column #Define top left x coordinate of square
-        y1 = length*row #Define top left y coordinate of square
-        x2 = length*(column+1) #Define bottom right x coordinate of square
-        y2 = length*(row+1) #Define bottom right y coordinate of square
+        x1 = length*column + excessSpace/2 #Define top left x coordinate of square
+        y1 = length*row + excessSpace/2 #Define top left y coordinate of square
+        x2 = length*(column+1) + excessSpace/2 #Define bottom right x coordinate of square
+        y2 = length*(row+1) + excessSpace/2 #Define bottom right y coordinate of square
 
 
         #To alternate colours every time a square is created
