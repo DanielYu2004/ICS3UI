@@ -12,7 +12,7 @@ xSpeed = 5
 gravity = 0.24
 
 for f in range(5000):
-    y1 -= 0.24 * f**2 + yspeed
+    y1 -= 0.24 * f**2 
     y2 = y1 + 50
     x1 -= f*xSpeed
     x2 = x1 + 50

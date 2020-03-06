@@ -4,7 +4,7 @@ import random
 tk = Tk()
 
 
-length = 100
+length = 80
 maxdot = 8
 mindot = 4
 
