@@ -22,7 +22,7 @@ yBall = (y1 + y2)/2 #Y coordinate of center of ball
 xSpeed = 10 #X speed of ball
 ySpeed = 1 #Y speed of ball
 
-colours = ["blue", "green", "red", "purple", "orange", "hot pink"] #Colour choices
+colours = ["blue", "green", "red", "purple", "orange", "hot pink", "grey"] #Colour choices
 
 #Initialize screen
 screen = Canvas(tk, width=width, height=height, background="black")
@@ -46,6 +46,8 @@ while True:
         if distance < radius:
             color = colours[circle-1]
             break
+        elif circle == 6:
+            color = colours[circle]
 
     ball = screen.create_oval(x1, y1, x2, y2, fill=color)
 
