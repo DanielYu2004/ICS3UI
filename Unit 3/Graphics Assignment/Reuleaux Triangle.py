@@ -7,7 +7,7 @@ myInterface = Tk()
 #Variables
 width = 600
 height = 600
-triLen = 100
+triLen = 300
 x1 = width /2
 y1 = (height - (triLen/2 * math.sqrt(3)))/2
 x2 = (width -triLen)/2
