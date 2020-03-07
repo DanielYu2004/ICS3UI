@@ -4,7 +4,7 @@ import random
 tk = Tk()
 
 
-length = 80 #length and width of each square
+length = 60 #length and width of each square
 maxdot = 8 #max dot size
 mindot = 4 #min dot size
 colourBool = True #Boolean to alternate colours

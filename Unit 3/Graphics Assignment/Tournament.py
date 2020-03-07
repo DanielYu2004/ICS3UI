@@ -5,10 +5,11 @@ tk = Tk()
 
 
 #Variables
-width = 600
+width = 800
 height = 600
-numRounds = 4
+numRounds = 5
 rounds= []
+
 
 for box in range(numRounds):
     rounds.append(2**box)
@@ -16,7 +17,9 @@ rounds = rounds[::-1]
 
 boxHeight = height / (2*rounds[0])
 boxWidth = width / (2 * numRounds)
-
+widthSpace = (width-(boxWidth*numRounds))/(numRounds-1)
+lineWidth = 1
+boxes = []
 
 #Initialize screen
 screen = Canvas(tk, width=width, height=height, background="black")
@@ -25,32 +28,41 @@ screen.pack()
 print(rounds)
 
 for round in range(numRounds):
-    #heightSpace = height-rounds[round]
-    for box in range(rounds[round]):
-        #x1 = box*
-        #screen.create_rectangle(x1,y1,x2,y2, fill="red")
-        print(box)
+    x1 = round*(widthSpace+boxWidth)
+    print(x1)
+    print(widthSpace)
+    print(boxWidth)
+    if boxes == []:
+
+        for box in range(rounds[round]):
+
+            heightSpace = (height - (boxHeight*rounds[round]))/(rounds[round]-1)
+            y1 = box*heightSpace + box*boxHeight
+
+            screen.create_rectangle(x1, y1, x1 + boxWidth, y1 + boxHeight, fill="red")
+            screen.create_line(x1 + boxWidth, y1 + (boxHeight/2) , x1 + boxWidth + (widthSpace/2) , y1 + (boxHeight/2) , fill="red", width=lineWidth)
+            boxes.append(y1)
+    else:
+        newBoxes = []
+        for coord in range(int(len(boxes)/2)):
+            y1 = (boxes[2*coord] + boxes[2*coord+1])/2
+            screen.create_rectangle(x1, y1, x1 + boxWidth, y1 + boxHeight, fill="red")
+            newBoxes.append(y1)
+
+            screen.create_line(x1-(widthSpace/2), boxes[2*coord] + (boxHeight/2), x1-(widthSpace/2), boxes[2*coord+1] + (boxHeight/2), fill="red", width=lineWidth)
+            screen.create_line(x1, y1+(boxHeight/2), x1 - (widthSpace/2), y1+(boxHeight/2), fill="red", width=lineWidth)
+
+            screen.create_line(x1+boxWidth, (boxes[2*coord] + boxes[2*coord+1])/2 + (boxHeight/2), x1 + boxWidth + (widthSpace/2), (boxes[2*coord] + boxes[2*coord+1])/2 + (boxHeight/2), fill="red", width=lineWidth)
+            
 
 
- 
+
+            #screen.create_line((boxes[2*coord] + boxes[2*coord+1])/2 + (boxHeight/2), x1 + boxWidth + (widthSpace/2), (boxes[2*coord] + boxes[2*coord+1])/2 + (boxHeight/2), fill="red", width=5)
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        boxes = list(newBoxes)
 
 
 

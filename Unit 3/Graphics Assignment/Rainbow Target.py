@@ -14,7 +14,7 @@ targetDist = width / 12 #Space between each target
 
 diameter = 30 #Diameter of ball
 x1 = 100 #X1 coordinate of ball 
-y1 = 300 #Y1 coordinate of ball
+y1 = 100 #Y1 coordinate of ball
 x2 = x1 + diameter #X2 coordinate of ball
 y2 = y1 + diameter #Y2 coordinate of ball
 xBall = (x1 + x2)/2 #X coordinate of center of ball
