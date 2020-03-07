@@ -8,7 +8,7 @@ length = 80 #length and width of each square
 maxdot = 8 #max dot size
 mindot = 4 #min dot size
 colourBool = True #Boolean to alternate colours
-excessSpace = 50
+excessSpace = 100 #Excess space around the checkerboard
 
 #Initialize screen
 screen = Canvas(tk, width=(length*8) + excessSpace, height=(length*8) + excessSpace, background="black")

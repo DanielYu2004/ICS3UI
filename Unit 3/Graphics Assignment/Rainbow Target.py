@@ -6,7 +6,7 @@ tk = Tk()
 
 
 #Variables
-width = 400 #Width of screen
+width = 600 #Width of screen
 height = width #Height of screen
 xCenter = width/2 #X coordinate of center of circles
 yCenter = height/2 #Y coordinate of center of circles
