@@ -17,6 +17,7 @@ screen.create_rectangle(0 + 50,525, width-50,height-150, fill="#b5651d")
 screen.create_polygon(0 + 50, 525, 0 + 50, 550, 0, height-250, 0 , height - 275, fill="#844F15", outline="black")
 screen.create_polygon(0 + 50, 525, 0, height - 275, width - 100 - 25, height - 275, width - 50, height-175, fill="#F49F40", outline="black")
 screen.create_rectangle(75, 550, 125, 700, fill="dark grey")
+#screen.create_re
 
 
 
