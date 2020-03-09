@@ -4,9 +4,9 @@ import random
 tk = Tk()
 
 
-length = 60 #length and width of each square
-maxdot = 8 #max dot size
-mindot = 4 #min dot size
+length = 80 #length and width of each square
+maxdot = 5 #max dot size
+mindot = 3 #min dot size
 colourBool = True #Boolean to alternate colours
 excessSpace = 100 #Excess space around the checkerboard
 
@@ -40,7 +40,7 @@ for row in range(8): #Loop for each row
             dotx1 = random.randint(x1, x2-size) #Define top left x coordinate of dot
             doty1 = random.randint(y1, y2-size) #Define top left y coordinate of dot
 
-            screen.create_rectangle(dotx1, doty1, dotx1 + size, doty1 + size, fill=colour)
+            screen.create_rectangle(dotx1, doty1, dotx1 + size, doty1 + size, fill=colour, outline=colour)
 
     #To alternate the starting colour at the start of each row
     if colourBool == True:
