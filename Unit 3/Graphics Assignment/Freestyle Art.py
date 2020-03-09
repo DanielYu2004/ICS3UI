@@ -12,7 +12,45 @@ screen = Canvas(tk, width=width, height=height, background="#A8B8E8")
 screen.pack()
 
 
-#WALl
+
+
+
+
+#Road
+
+screen.create_rectangle(0, 500, 800, 700, fill="grey", outline="black")
+
+lines = random.randint(6, 18)
+lineWidth = random.randint(40, 100)
+lineHeight = random.randint(10,20)
+space = width/(lines-1)
+
+for line in range(lines):
+    screen.create_rectangle((space+lineWidth)*line, 600 - lineHeight/2, (space+lineWidth)*line + lineWidth, 600 + lineHeight/2, fill="white")
+
+
+#Grass
+
+screen.create_rectangle(0, 350, 800, 500, fill="green")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+#WALL
 screen.create_rectangle(0,0,600, 700, fill="#D3DEFF")
 
 
@@ -42,7 +80,7 @@ screen.create_rectangle(0 + 50,575, width-50,height-150 + 25+ 25, fill="#b5651d"
 screen.create_polygon(0 + 50, 525+ 25+ 25, 0 + 50, 550+ 25+ 25, 0, height-250+ 25+ 25, 0 , height - 275+ 25+ 25, fill="#844F15", outline="black")
 screen.create_polygon(0 + 50, 525+ 25+ 25, 0, height - 275+ 25+ 25, width - 100 - 25, height - 275+ 25+ 25, width - 50, height-175+ 25+ 25, fill="#F49F40", outline="black")
 
-
+"""
 
 
 
