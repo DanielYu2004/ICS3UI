@@ -1,3 +1,12 @@
+##########################################################
+#                       Daniel Yu                        # 
+#                 Massive Hat in Field                   #
+#                        ICS3UI                          #
+##########################################################
+
+
+
+
 from tkinter import *
 import time
 import random
@@ -10,6 +19,13 @@ height = 700
 
 screen = Canvas(tk, width=width, height=height, background="#A8B8E8")
 screen.pack()
+
+#Sun and Sky
+
+sunX = random.randint(0,800)
+sunY = random.randint(0,350)
+sunSize = random.randint(100, 150)
+screen.create_oval(sunX - (sunSize/2), sunY - (sunSize/2), sunX + (sunSize/2), sunY + (sunSize/2), fill="orange")
 
 
 
@@ -30,7 +46,7 @@ for cloud in range(numClouds):
         cloudSize = random.randint(80,100)
         cloudx1 = random.randint(x1, x1+80) 
         cloudy1 = random.randint(y1, y1+40)
-        screen.create_oval(cloudx1, cloudy1, cloudx1+ random.randint(cloudSize-40, cloudSize+40), cloudy1 + random.randint(cloudSize-40, cloudSize+40), fill="white", outline="white")
+        screen.create_oval(cloudx1, cloudy1, cloudx1+ random.randint(cloudSize-60, cloudSize+60), cloudy1 + random.randint(cloudSize-60, cloudSize+60), fill="white", outline="white")
 
 
 
@@ -64,12 +80,12 @@ for line in range(lines):
 
 
 
-#Temple
+#Hat
 
-screen.create_polygon(150, 450, 150, 375, 250, 375, 300, 350, 325, 250, 350, 150, 350, 125, 375, 100, 400, 90, 425, 100, 450, 125, 450, 150, 475, 250, 500, 350, 550, 375, 650, 375, 650, 450, fill="#CCAF7E", smooth=True, outline="black")
-
-
-
+screen.create_polygon(150, 450, 150, 350, 250, 375, 300, 350, 325, 250, 350, 150, 350, 125, 375, 70, 400, 125, 425, 70, 450, 125, 450, 150, 475, 250, 500, 350, 550, 375, 650, 350, 650, 450, fill="#CCAF7E", smooth=True, outline="black", width="3")
+screen.create_polygon(300, 325, 300, 350, 400, 360, 500, 350, 500, 325, fill="#826334", smooth=True, outline='black', width="3")
+screen.create_polygon(300, 340, 305, 325, 495,325, 500, 340, fill="#826334")
+screen.create_line( 305, 325, 495,325, width="3" )
 
 #Grid lines
 spacing = 50
