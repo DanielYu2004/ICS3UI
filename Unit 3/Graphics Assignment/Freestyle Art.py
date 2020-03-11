@@ -87,18 +87,18 @@ screen.create_polygon(300, 325, 300, 350, 400, 360, 500, 350, 500, 325, fill="#8
 screen.create_polygon(300, 340, 305, 325, 495,325, 500, 340, fill="#826334")
 screen.create_line( 305, 325, 495,325, width="3" )
 
-#Grid lines
-spacing = 50
+# #Grid lines
+# spacing = 50
 
-for x in range(0, 1000, spacing): 
-    screen.create_line(x, 25, x, 1000, fill="blue")
-    screen.create_text(x, 5, text=str(x), font="Times 9", anchor = N)
+# for x in range(0, 1000, spacing): 
+#     screen.create_line(x, 25, x, 1000, fill="blue")
+#     screen.create_text(x, 5, text=str(x), font="Times 9", anchor = N)
 
-for y in range(0, 1000, spacing):
-    screen.create_line(25, y, 1000, y, fill="blue")
-    screen.create_text(5, y, text=str(y), font="Times 9", anchor = W)
+# for y in range(0, 1000, spacing):
+#     screen.create_line(25, y, 1000, y, fill="blue")
+#     screen.create_text(5, y, text=str(y), font="Times 9", anchor = W)
 
-screen.update()
+# screen.update()
 
 
 screen.mainloop()
