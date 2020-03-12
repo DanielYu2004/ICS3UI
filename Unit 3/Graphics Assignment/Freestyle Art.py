@@ -17,15 +17,33 @@ tk = Tk()
 width = 800
 height = 700
 
-screen = Canvas(tk, width=width, height=height, background="#A8B8E8")
-screen.pack()
+
 
 #Sun and Sky
 
 sunX = random.randint(0,800)
 sunY = random.randint(0,350)
 sunSize = random.randint(100, 150)
-screen.create_oval(sunX - (sunSize/2), sunY - (sunSize/2), sunX + (sunSize/2), sunY + (sunSize/2), fill="orange")
+if sunY > 300:
+    sunColour ="#F5822D"
+    skyColour ="#F3B26D"
+elif sunY > 250:
+    sunColour ="#F0B133"
+    skyColour="#A8B8E8"
+
+elif sunY > 150:
+    sunColour = "#F0DE33"
+    skyColour="#A8B8E8"
+
+else:
+    sunColour = "#FFEB30"
+    skyColour="#A8B8E8"
+print(sunColour)
+
+
+screen = Canvas(tk, width=width, height=height, background=skyColour)
+screen.pack()
+screen.create_oval(sunX - (sunSize/2), sunY - (sunSize/2), sunX + (sunSize/2), sunY + (sunSize/2), fill=sunColour)
 
 
 

@@ -6,8 +6,8 @@ tk = Tk()
 
 #Variables
 width = 800
-height = 600
-numRounds = 9
+height = 700
+numRounds = 2
 rounds= []
 
 
