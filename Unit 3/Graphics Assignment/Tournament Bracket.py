@@ -1,3 +1,9 @@
+##########################################################
+#                       Daniel Yu                        # 
+#                    Tournament Bracket                  #
+#                        ICS3UI                          #
+##########################################################
+
 from tkinter import *
 import time
 import random
