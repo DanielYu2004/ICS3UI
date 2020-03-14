@@ -7,7 +7,7 @@ tk = Tk()
 #Variables
 width = 800
 height = 700
-numRounds = 2
+numRounds = 7
 rounds= []
 
 
