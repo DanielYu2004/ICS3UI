@@ -25,8 +25,7 @@ cloudSpeed = 5
 start = time.time()
 breakVar = False
 for f in range(10000):
-    if breakVar == False:
-            
+    if breakVar == False:   
         if time.time() - start > 10:
             for x in range(10000):
 
@@ -42,15 +41,21 @@ for f in range(10000):
                     break
 
                 for bigC in cloudList:
+
                     for littleC in range(len(bigC)):
+                        appendBool = True
                         newCoords = []
                         for coord in range(len(bigC[littleC])):
+                            if bigC[littleC][coord] < -100:
+                                appendBool = False
                             if coord % 2 == 0:
                                 newCoords.append(bigC[littleC][coord] - cloudSpeed)
                             else:
                                 newCoords.append(bigC[littleC][coord])
+                            
                         bigC[littleC] = newCoords
-                        renderClouds.append(screen.create_oval(newCoords, fill="white", outline="white"))
+                        if appendBool == True:
+                            renderClouds.append(screen.create_oval(newCoords, fill="white", outline="white"))
 
 
                 x2 = x1 - 80
@@ -83,8 +88,6 @@ for f in range(10000):
                     screen.delete(cloud)
                 time.sleep(0.03)
 
-                
-
         else:
             if breakVar == False:
                 if f % 40 == 0:
@@ -113,13 +116,19 @@ for f in range(10000):
                 for bigC in cloudList:
                     for littleC in range(len(bigC)):
                         newCoords = []
+                        appendBool = True
                         for coord in range(len(bigC[littleC])):
+                            if bigC[littleC][coord] < -100:
+                                appendBool = False
+                            #    break
+                            #else:
                             if coord % 2 == 0:
                                 newCoords.append(bigC[littleC][coord] - cloudSpeed)
                             else:
                                 newCoords.append(bigC[littleC][coord])
                         bigC[littleC] = newCoords
-                        renderClouds.append(screen.create_oval(newCoords, fill="white", outline="white"))
+                        if appendBool == True:
+                            renderClouds.append(screen.create_oval(newCoords, fill="white", outline="white"))
 
 
 
@@ -148,7 +157,7 @@ for f in range(10000):
                 screen.delete(Tail, Body, Head, Beak, Wing, Eye)
                 for cloud in renderClouds:
                     screen.delete(cloud)
-                time.sleep(0.03)
+                time.sleep(0.003)
             else:
                 break
 

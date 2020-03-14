@@ -3,10 +3,6 @@
 #                    Cowboy Memorial                     #
 #                        ICS3UI                          #
 ##########################################################
-
-
-
-
 from tkinter import *
 import time
 import random
@@ -14,13 +10,13 @@ import math
 tk = Tk()
 
 
+#Screen dimensions
 width = 800
 height = 700
 
 
 
 #Sun and Sky
-
 sunX = random.randint(0,800)
 sunY = random.randint(0,350)
 sunSize = random.randint(100, 150)
@@ -38,11 +34,12 @@ elif sunY > 150:
 else:
     sunColour = "#FFEB30"
     skyColour="#A8B8E8"
-print(sunColour)
 
-
+#Initialize screen
 screen = Canvas(tk, width=width, height=height, background=skyColour)
 screen.pack()
+
+#Create sun
 screen.create_oval(sunX - (sunSize/2), sunY - (sunSize/2), sunX + (sunSize/2), sunY + (sunSize/2), fill=sunColour)
 
 
@@ -51,14 +48,14 @@ screen.create_oval(sunX - (sunSize/2), sunY - (sunSize/2), sunX + (sunSize/2), s
 
 #Clouds
 
-numClouds = random.randint(4,5)
+numClouds = random.randint(2,5) #Number of clouds
 
 for cloud in range(numClouds):
-    clouds = random.randint(8,15)
+
+    clouds = random.randint(8,15) #Number of circles within cloud
 
     x1 = random.randint(0,width)
-    y1 = random.randint(0, 350 - 200)
-    #screen.create_rectangle(x1,y1, x1 + 100, y1 + 100, fill="blue")
+    y1 = random.randint(0, 150)
 
     for circle in range(clouds):
         cloudSize = random.randint(80,100)
@@ -105,18 +102,6 @@ screen.create_polygon(300, 325, 300, 350, 400, 360, 500, 350, 500, 325, fill="#8
 screen.create_polygon(300, 340, 305, 325, 495,325, 500, 340, fill="#826334")
 screen.create_line( 305, 325, 495,325, width="3" )
 
-# #Grid lines
-# spacing = 50
-
-# for x in range(0, 1000, spacing): 
-#     screen.create_line(x, 25, x, 1000, fill="blue")
-#     screen.create_text(x, 5, text=str(x), font="Times 9", anchor = N)
-
-# for y in range(0, 1000, spacing):
-#     screen.create_line(25, y, 1000, y, fill="blue")
-#     screen.create_text(5, y, text=str(y), font="Times 9", anchor = W)
-
-# screen.update()
 
 
 screen.mainloop()
