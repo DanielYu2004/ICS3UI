@@ -1,3 +1,9 @@
+##########################################################
+#                       Daniel Yu                        # 
+#                    Rainbow Target                      #
+#                        ICS3UI                          #
+##########################################################
+
 from tkinter import *
 import time
 import random
