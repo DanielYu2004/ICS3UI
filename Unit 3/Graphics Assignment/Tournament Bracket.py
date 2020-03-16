@@ -12,7 +12,7 @@ tk = Tk()
 
 #Variables
 width = 800 #Width of board
-height = 700 #Height of board
+height = 800 #Height of board
 numRounds = 6 #Number of rounds
 rounds = [] #Array for rounds
 

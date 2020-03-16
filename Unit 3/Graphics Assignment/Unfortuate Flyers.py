@@ -13,9 +13,6 @@ screen = Canvas(myInterface, width=1100, height=700, background="sky blue")
 screen.pack()
 
 
-
-
-
 x1 = 400
 y1 = 350
 
@@ -28,7 +25,11 @@ cloudList = []
 cloudSpeed = 5
 start = time.time()
 breakVar = False
+flying = True
 for f in range(10000):
+
+    if (5*f) > 3800:
+        flying = False
 
     if f % 40 == 0:
         Cx1 = random.randint(1200, 1300)
@@ -44,8 +45,12 @@ for f in range(10000):
 
 
 
-
-    y1 = 350 + 200*math.sin(0.04*f)
+    prevy1 = y1
+    if flying == True:
+        y1 = 350 + 200*math.sin(0.04*f)
+    else:
+        y1 += 10
+        x1 -= 10
 
     x2 = x1 - 80
     y2 = y1 + 20
@@ -70,7 +75,11 @@ for f in range(10000):
             if appendBool == True:
                 renderClouds.append(screen.create_oval(newCoords, fill="white", outline="white"))
 
-    Pole = screen.create_rectangle(x2 + 5000 - (5*f), 100, x1 + 5000 - (5*f), 700, fill="grey")
+    if flying == True:
+        Pole = screen.create_rectangle(x2 + 3800 - (5*f), 100, x1 + 3800 - (5*f), 900, fill="grey")
+    else:
+        Pole = screen.create_rectangle(x2 , 100, x1, 900, fill="grey")
+ 
 
     #Tail
     Tail = screen.create_polygon(x1-120, y1+25, x1-175, y1+50, x1-175, y1-25, fill="white", outline="black")
@@ -84,17 +93,26 @@ for f in range(10000):
     #Beak
     Beak = screen.create_polygon(x1+35, y1-20, x1+35, y1+20, x1+40+40, y1, fill="orange", outline="black")
 
-    #Wing
-    Wing = screen.create_polygon(x1-75, y1, x1-75, y1+25, x1-45, y1+25, x1-90, y1-60, x1-150, y1-75, x1-175, y1-50, fill="white", outline="black", smooth=True)
+    if prevy1 > y1:
+        #Wing
+        Wing  = screen.create_polygon(x1 - 75, y1 , x1 - 45, y1 + 10, x1 - 45, y1 + 20, x1 - 75, y1 + 50, x1 - 150, y1 + 50, x1 - 200, y1 + 25, fill="white", outline="black", smooth=True)
+    else:
+        #Wing
+        Wing = screen.create_polygon(x1-75, y1, x1-75, y1+25, x1-45, y1+25, x1-90, y1-60, x1-150, y1-75, x1-175, y1-50, fill="white", outline="black", smooth=True)
 
-    #Eye
-    Eye = screen.create_oval(x1,y1-15, x1+10, y1, fill="black")
+    if flying == True:
+        #Eye open
+        Eye = screen.create_oval(x1 + 10,y1-15, x1+ 20, y1, fill="black")
+    else:
+        #Eye closed
+        Eye = screen.create_text(x1 + 15, y1 - 10, text="X", font="20")
 
     screen.update()
     screen.delete(Tail, Body, Head, Beak, Wing, Eye, Pole)
     for cloud in renderClouds:
         screen.delete(cloud)
     time.sleep(0.003)
+
 
 
 
