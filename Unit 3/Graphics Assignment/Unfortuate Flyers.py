@@ -113,6 +113,8 @@ for f in range(10000):
         Eye = screen.create_text(x1 + 15, y1 - 10, text="X", font="20")
 
     screen.update()
+
+    #Deleting objects
     screen.delete(Tail, Body, Head, Beak, Wing, Eye, Pole)
     for cloud in renderClouds:
         screen.delete(cloud)
