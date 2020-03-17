@@ -23,7 +23,6 @@ x3 = x1 + 1600
 
 cloudList = []
 cloudSpeed = 5
-start = time.time()
 breakVar = False
 flying = True
 
