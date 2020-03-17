@@ -39,7 +39,6 @@ for f in range(10000):
             cloudSize = random.randint(80,150)
             cloudx1 = random.randint(Cx1, Cx1+120) 
             cloudy1 = random.randint(Cy1, Cy1+40)
-            #screen.create_oval(cloudx1, cloudy1, cloudx1+ cloudSize, cloudy1 +cloudSize, fill="white", outline="white")
             cloud.append([int(cloudx1) + random.randint(-20, 20), int(cloudy1) + random.randint(-20, 20), int(cloudx1+ cloudSize) + random.randint(-20, 20), int(cloudy1 + cloudSize) + random.randint(-20, 20)])
         cloudList.append(cloud)
 
@@ -48,6 +47,7 @@ for f in range(10000):
     prevy1 = y1
     if flying == True:
         y1 = 350 + 200*math.sin(0.04*f)
+        x1 = 500 + 400*math.sin(0.005*f)
     else:
         y1 += 10
         x1 -= 10
@@ -65,8 +65,7 @@ for f in range(10000):
             for coord in range(len(bigC[littleC])):
                 if bigC[littleC][coord] < -100:
                     appendBool = False
-                #    break
-                #else:
+
                 if coord % 2 == 0:
                     newCoords.append(bigC[littleC][coord] - cloudSpeed)
                 else:
