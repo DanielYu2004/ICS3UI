@@ -82,4 +82,4 @@ while True:
     elif y2 >= height:
         ySpeed *= -1
 
-screen.mainloop() #For visual studio 
+screen.mainloop() #For visual studio code
