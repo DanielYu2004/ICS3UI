@@ -12,7 +12,7 @@ tk = Tk()
 
 
 #Variables
-width = 600 #Width of screen
+width = 800 #Width of screen
 height = width #Height of screen
 xCenter = width/2 #X coordinate of center of circles
 yCenter = height/2 #Y coordinate of center of circles
@@ -82,4 +82,4 @@ while True:
     elif y2 >= height:
         ySpeed *= -1
 
-screen.mainloop() #For visual studio code 
+screen.mainloop() #For visual studio code

@@ -1,3 +1,10 @@
+##########################################################
+#                       Daniel Yu                        # 
+#                     Van Gogh Board                     #
+#                        ICS3UI                          #
+##########################################################
+
+
 from tkinter import *
 import time
 import random
