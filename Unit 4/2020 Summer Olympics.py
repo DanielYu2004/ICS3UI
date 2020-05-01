@@ -12,25 +12,29 @@ screen.pack()
 
 
 
-# #Grid lines
-# spacing = 50
-
-# for x in range(0, 1000, spacing): 
-#     screen.create_line(x, 25, x, 1000, fill="blue")
-#     screen.create_text(x, 5, text=str(x), font="Times 9", anchor = N)
-
-# for y in range(0, 1000, spacing):
-#     screen.create_line(25, y, 1000, y, fill="blue")
-#     screen.create_text(5, y, text=str(y), font="Times 9", anchor = W)
-
-# screen.update()
-
 
 # Foreground
 screen.create_rectangle(0, 700, 1000, 600, fill="green")
 
 # Track
 screen.create_rectangle(0, 600, 1000, 300, fill="#141414", outline="#141414")
+
+
+
+#Grid lines
+spacing = 50
+
+for x in range(0, 1000, spacing): 
+    screen.create_line(x, 25, x, 1000, fill="blue")
+    screen.create_text(x, 5, text=str(x), font="Times 9", anchor = N)
+
+for y in range(0, 1000, spacing):
+    screen.create_line(25, y, 1000, y, fill="blue")
+    screen.create_text(5, y, text=str(y), font="Times 9", anchor = W)
+
+screen.update()
+
+
 
 buildings = []
 cloudList = []
@@ -61,33 +65,55 @@ def createLine(coords):
     return lineCoords
 
 def drawRunner(coords, frame):
-    x1 = 500
-    y1 = 350
+    # x1 = 500
+    # y1 = 350
     skinColour = "#ffd17a"
-    if frame == 1:
-        screen.create_polygon(x1, y1 + 10, x1 - 10, y1 + 30, x1 - 20, y1 + 35, x1 - 25, y1 + 35, fill=skinColour)
-
-        screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
-        screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
-
-        screen.create_polygon(x1, y1 + 10, x1 +10, y1 + 10 + 5, x1 + 15, y1 + 10 + 8, x1 + 20, y1 + 10 + 30, x1 + 15, y1 + 10 + 30, x1 + 15, y1 + 10 + 20, x1, y1 + 15,fill=skinColour)
+    components = []
+    x1 = coords[0]
+    y1 = coords[1]
+    
     if frame == 2:
-        x1 = 600
-        y1 = 350
-        screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
-        screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
+        # x1 = 700
+        # y1 = 350
+        leg1 = screen.create_polygon(x1, y1 + 10, x1 +10, y1 + 10 + 5, x1 + 15, y1 + 10 + 8, x1 + 20, y1 + 10 + 30, x1 + 15, y1 + 10 + 30, x1 + 15, y1 + 10 + 20, x1, y1 + 15,fill=skinColour)
+        body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
+        head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
+        leg2 = screen.create_polygon(x1, y1 + 10, x1 - 10, y1 + 30, x1 - 20, y1 + 35, x1 - 25, y1 + 35, fill=skinColour)
+        components = [leg1, leg2, body, head]
+    if frame == 0:
+        leg1 = screen.create_polygon(x1, y1 + 10, x1 - 10, y1 + 30, x1 - 20, y1 + 35, x1 - 25, y1 + 35, fill=skinColour)
+        body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
+        head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour) 
+        leg2 = screen.create_polygon(x1, y1 + 10, x1 +10, y1 + 10 + 5, x1 + 15, y1 + 10 + 8, x1 + 20, y1 + 10 + 30, x1 + 15, y1 + 10 + 30, x1 + 15, y1 + 10 + 20, x1, y1 + 15,fill=skinColour)
+        components = [leg1, leg2, body, head]
+    if frame == 1:
+        # x1 = 600
+        # y1 = 350
 
+        leg1 = screen.create_polygon(x1, y1 + 5, x1 - 5, y1 + 15, x1 - 20, y1 + 40, x1 - 10, y1 + 40, fill=skinColour)
+        body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
+        head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
+        leg2 = screen.create_polygon(x1, y1 + 5, x1 + 5, y1 + 10, x1 + 10, y1 + 30, x1 + 10, y1 + 40, x1 + 3, y1 + 40, fill=skinColour)
+        components = [leg1, leg2, body, head]
+    if frame == 4:
+        leg1 = screen.create_polygon(x1, y1 + 10, x1 - 10, y1 + 30, x1 - 20, y1 + 35, x1 - 25, y1 + 35, fill=skinColour)
+        body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
+        head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour) 
+        leg2 = screen.create_polygon(x1, y1 + 10, x1 +10, y1 + 10 + 5, x1 + 15, y1 + 10 + 8, x1 + 20, y1 + 10 + 30, x1 + 15, y1 + 10 + 30, x1 + 15, y1 + 10 + 20, x1, y1 + 15,fill=skinColour)
+        components = [leg1, leg2, body, head]
     if frame == 3:
-        x1 = 700
-        y1 = 350
-        screen.create_polygon(x1, y1 + 10, x1 +10, y1 + 10 + 5, x1 + 15, y1 + 10 + 8, x1 + 20, y1 + 10 + 30, x1 + 15, y1 + 10 + 30, x1 + 15, y1 + 10 + 20, x1, y1 + 15,fill=skinColour)
+        # x1 = 600
+        # y1 = 350
 
-        screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
-        screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
+        leg2 = screen.create_polygon(x1, y1 + 5, x1 + 5, y1 + 10, x1 + 10, y1 + 30, x1 + 10, y1 + 40, x1 + 3, y1 + 40, fill=skinColour)
 
-        screen.create_polygon(x1, y1 + 10, x1 - 10, y1 + 30, x1 - 20, y1 + 35, x1 - 25, y1 + 35, fill=skinColour)
+        body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
+        head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
+        leg1 = screen.create_polygon(x1, y1 + 5, x1 - 5, y1 + 15, x1 - 20, y1 + 40, x1 - 10, y1 + 40, fill=skinColour)
+        components = [leg1, leg2, body, head]
 
 
+    return components
 
 
 for i in range(4):
@@ -102,9 +128,19 @@ for i in range(1,9):
     y1 = 450-(lineHeight/2)
     roadLines.append([x1,y1])
 
-drawRunner(1,1)
-drawRunner(1,2)
-drawRunner(1,3)
+# drawRunner([250, 400],0)
+# drawRunner([350, 400],1)
+# drawRunner([450, 400],2)
+# drawRunner([550, 400],3)
+# drawRunner([650, 400],4)
+
+# drawRunner(1,1)
+
+# drawRunner(1,2)
+# drawRunner(1,3)
+
+
+x = 0
 
 for f in range(1000000):
 
@@ -170,13 +206,16 @@ for f in range(1000000):
                 line[0] = 1000
                 renderLines.append(createLine(line))
                 updatedLines.append(line)
-    print(renderLines)
+    #print(renderLines)
     roadLines = updatedLines
 
 
     
- 
-    
+    if f % 20 == 0:
+        x += 1
+    print(x)
+    person = drawRunner([350, 350] , x % 5)
+
     
     
     
@@ -211,7 +250,8 @@ for f in range(1000000):
         
     for line in renderLines:
         screen.delete(line)
-    
+    for component in person:
+        screen.delete(component)
     
     
     
