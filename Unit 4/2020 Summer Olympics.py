@@ -3,20 +3,14 @@ import time
 import math
 import random
 myInterface = Tk()
-
-
-
-
 screen = Canvas(myInterface, width=1000, height=700, background="sky blue")
 screen.pack()
-
-
 
 
 # Foreground
 screen.create_rectangle(0, 700, 1000, 600, fill="green")
 
-# Track
+# Road
 screen.create_rectangle(0, 600, 1000, 300, fill="#141414", outline="#141414")
 
 
@@ -24,6 +18,9 @@ buildings = []
 cloudList = []
 roadLines = []
 runners = []
+runnerSpeeds1 = []
+runnerSpeeds2 = []
+numRunners = 20
 
 
 cameraSpeed = 5
@@ -122,7 +119,7 @@ for i in range(4):
     colour = random.choice(["#a8a8a8", "#858585", "#787474"])
     x1 = random.randint(0,1000)
     height = random.randint(200, 400)
-    buildings.append([[x1, 300, x1+random.randint(100, 300), 300 - height], colour])
+    buildings.append([[x1, 300, x1+random.randint(100, 500), 300 - height], colour])
 
 increment = (1000-(8*lineWidth))/7
 for i in range(1,9):
@@ -130,13 +127,25 @@ for i in range(1,9):
     y1 = 450-(lineHeight/2)
     roadLines.append([x1,y1])
 
-drawRunner([250, 400],0)
-drawRunner([350, 400],1)
-drawRunner([450, 400],2)
-drawRunner([550, 400],3)
-drawRunner([650, 400],4)
-drawRunner([750, 400],5)
-drawRunner([850, 400],6)
+
+# Create Runner array
+for x in range(numRunners):
+    runners.append([[random.randint(0, 400), random.randint(300, 550)], random.randint(0,6)])
+runners = sorted(runners, key=lambda x: x[0][1]) # To make sure overlaps of runners are accurate
+print(runners)
+for i in range(numRunners):
+    runnerSpeeds1.append(random.randint(-500, 500) * 0.001)    
+for i in range(numRunners):
+    runnerSpeeds2.append(random.randint(-1000, 2000) * 0.001)
+
+
+# drawRunner([250, 400],0)
+# drawRunner([350, 400],1)
+# drawRunner([450, 400],2)
+# drawRunner([550, 400],3)
+# drawRunner([650, 400],4)
+# drawRunner([750, 400],5)
+# drawRunner([850, 400],6)
 
 # drawRunner(1,1)
 
@@ -161,7 +170,6 @@ for f in range(1000000):
         cloudList.append(cloud)
     renderClouds = []
     newCloudList = cloudList
-    print(len(cloudList))
     for bigC in cloudList:
             for littleC in range(len(bigC)):
                 newCoords = []
@@ -183,7 +191,7 @@ for f in range(1000000):
     # For Buildings
     if f % 60 == 0:
         colour = random.choice(["#a8a8a8", "#858585", "#787474"])
-        buildings.append([[1000, 300, 1000 + random.randint(100, 400), 300 - random.randint(100,400)], colour])
+        buildings.append([[1000, 300, 1000 + random.randint(100, 400), 300 - random.randint(100,250)], colour])
 
     renderBuildings = []
     updatedBuildings = []
@@ -198,6 +206,7 @@ for f in range(1000000):
                 renderBuildings.append(createBuilding(coords, colour))
                 updatedBuildings.append(buildings[building])
     buildings = updatedBuildings
+    #print(len(buildings))
 
     # For Lines
 
@@ -218,12 +227,22 @@ for f in range(1000000):
 
 
     
-    # if f % 5 == 0:
-    #     x += 1
-    # print(x)
-    # runners.append(drawRunner([350 + x, 350] , x % 6))
+    if f % 5 == 0:
+        x += 1
 
-    
+
+    renderRunners = []
+    if f < 500:
+        for runner in range(len(runners)):
+            #print(runner[0], runner[1])
+            runners[runner][0][0] += runnerSpeeds1[runner]
+            renderRunners.append(drawRunner(runners[runner][0], (runners[runner][1] + x) % 6))
+    elif f > 499:
+        for runner in range(len(runners)):
+            #print(runner[0], runner[1])
+            runners[runner][0][0] += runnerSpeeds2[runner]
+            renderRunners.append(drawRunner(runners[runner][0], (runners[runner][1] + x) % 6))
+        
     
     
     
@@ -238,13 +257,8 @@ for f in range(1000000):
     
     
     
-    
-    
-    
-    
-    
-    
-    
+    time.sleep(0.03)
+
     
     
     
@@ -257,11 +271,12 @@ for f in range(1000000):
     for line in renderLines:
         screen.delete(line)
     line = []
-    for runner in runners:
-        for component in runner:
+    for runnerObject in renderRunners:
+        for component in runnerObject:
             screen.delete(component)
-    runners = []
+    #print(renderRunners)
         
+
     
     
     
@@ -271,8 +286,6 @@ for f in range(1000000):
     
     
     
-    
-    time.sleep(0.003)
 
 
 
