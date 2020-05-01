@@ -20,25 +20,11 @@ screen.create_rectangle(0, 700, 1000, 600, fill="green")
 screen.create_rectangle(0, 600, 1000, 300, fill="#141414", outline="#141414")
 
 
-
-#Grid lines
-spacing = 50
-
-for x in range(0, 1000, spacing): 
-    screen.create_line(x, 25, x, 1000, fill="blue")
-    screen.create_text(x, 5, text=str(x), font="Times 9", anchor = N)
-
-for y in range(0, 1000, spacing):
-    screen.create_line(25, y, 1000, y, fill="blue")
-    screen.create_text(5, y, text=str(y), font="Times 9", anchor = W)
-
-screen.update()
-
-
-
 buildings = []
 cloudList = []
 roadLines = []
+runners = []
+
 
 cameraSpeed = 5
 lineWidth = 50
@@ -72,7 +58,7 @@ def drawRunner(coords, frame):
     x1 = coords[0]
     y1 = coords[1]
     
-    if frame == 2:
+    if frame == 3:
         # x1 = 700
         # y1 = 350
         leg1 = screen.create_polygon(x1, y1 + 10, x1 +10, y1 + 10 + 5, x1 + 15, y1 + 10 + 8, x1 + 20, y1 + 10 + 30, x1 + 15, y1 + 10 + 30, x1 + 15, y1 + 10 + 20, x1, y1 + 15,fill=skinColour)
@@ -95,13 +81,24 @@ def drawRunner(coords, frame):
         head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
         leg2 = screen.create_polygon(x1, y1 + 5, x1 + 5, y1 + 10, x1 + 10, y1 + 30, x1 + 10, y1 + 40, x1 + 3, y1 + 40, fill=skinColour)
         components = [leg1, leg2, body, head]
-    if frame == 4:
-        leg1 = screen.create_polygon(x1, y1 + 10, x1 - 10, y1 + 30, x1 - 20, y1 + 35, x1 - 25, y1 + 35, fill=skinColour)
+    if frame == 2:
+        # x1 = 600
+        # y1 = 350
+
+        leg2 = screen.create_polygon(x1, y1 + 5, x1 + 5, y1 + 10, x1 + 10, y1 + 30, x1 + 10, y1 + 40, x1 + 3, y1 + 40, fill=skinColour)
         body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
-        head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour) 
-        leg2 = screen.create_polygon(x1, y1 + 10, x1 +10, y1 + 10 + 5, x1 + 15, y1 + 10 + 8, x1 + 20, y1 + 10 + 30, x1 + 15, y1 + 10 + 30, x1 + 15, y1 + 10 + 20, x1, y1 + 15,fill=skinColour)
+        head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
+        leg1 = screen.create_polygon(x1, y1 + 15, x1 - 5, y1 + 10, x1 - 5, y1 + 15, x1 - 15, y1 + 40, x1 - 5, y1 + 40, fill=skinColour)
+       
         components = [leg1, leg2, body, head]
-    if frame == 3:
+
+    # if frame == 6:
+    #     leg1 = screen.create_polygon(x1, y1 + 10, x1 - 10, y1 + 30, x1 - 20, y1 + 35, x1 - 25, y1 + 35, fill=skinColour)
+    #     body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
+    #     head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour) 
+    #     leg2 = screen.create_polygon(x1, y1 + 10, x1 +10, y1 + 10 + 5, x1 + 15, y1 + 10 + 8, x1 + 20, y1 + 10 + 30, x1 + 15, y1 + 10 + 30, x1 + 15, y1 + 10 + 20, x1, y1 + 15,fill=skinColour)
+    #     components = [leg1, leg2, body, head]
+    if frame == 4:
         # x1 = 600
         # y1 = 350
 
@@ -109,9 +106,14 @@ def drawRunner(coords, frame):
 
         body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
         head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
-        leg1 = screen.create_polygon(x1, y1 + 5, x1 - 5, y1 + 15, x1 - 20, y1 + 40, x1 - 10, y1 + 40, fill=skinColour)
+        leg1 = screen.create_polygon(x1, y1 + 15, x1 - 5, y1 + 10, x1 - 5, y1 + 15, x1 - 20, y1 + 40, x1 - 10, y1 + 40, fill=skinColour)
         components = [leg1, leg2, body, head]
-
+    if frame == 5:
+        leg1 = screen.create_polygon(x1, y1 + 5, x1 - 5, y1 + 15, x1 - 20, y1 + 40, x1 - 10, y1 + 40, fill=skinColour)
+        body = screen.create_rectangle(x1-8, y1-10, x1+8, y1+20, fill="red")
+        head = screen.create_oval(x1 - 8, y1-10, x1 + 8, y1 - 10 - 16, fill=skinColour)
+        leg2 = screen.create_polygon(x1, y1 + 5, x1 + 5, y1 + 10, x1 + 10, y1 + 30, x1 + 10, y1 + 40, x1 + 3, y1 + 40, fill=skinColour)
+        components = [leg1, leg2, body, head]
 
     return components
 
@@ -128,11 +130,13 @@ for i in range(1,9):
     y1 = 450-(lineHeight/2)
     roadLines.append([x1,y1])
 
-# drawRunner([250, 400],0)
-# drawRunner([350, 400],1)
-# drawRunner([450, 400],2)
-# drawRunner([550, 400],3)
-# drawRunner([650, 400],4)
+drawRunner([250, 400],0)
+drawRunner([350, 400],1)
+drawRunner([450, 400],2)
+drawRunner([550, 400],3)
+drawRunner([650, 400],4)
+drawRunner([750, 400],5)
+drawRunner([850, 400],6)
 
 # drawRunner(1,1)
 
@@ -156,6 +160,8 @@ for f in range(1000000):
             cloud.append([int(cloudx1) + random.randint(-20, 20), int(cloudy1) + random.randint(-20, 20), int(cloudx1+ cloudSize) + random.randint(-20, 20), int(cloudy1 + cloudSize) + random.randint(-20, 20)])
         cloudList.append(cloud)
     renderClouds = []
+    newCloudList = cloudList
+    print(len(cloudList))
     for bigC in cloudList:
             for littleC in range(len(bigC)):
                 newCoords = []
@@ -163,6 +169,7 @@ for f in range(1000000):
                 for coord in range(len(bigC[littleC])):
                     if bigC[littleC][coord] < -100:
                         appendBool = False
+                        newCloudList.pop(0)
                     if coord % 2 == 0:
                         newCoords.append(bigC[littleC][coord] - cameraSpeed)
                     else:
@@ -170,7 +177,7 @@ for f in range(1000000):
                 bigC[littleC] = newCoords
                 if appendBool == True:
                     renderClouds.append(screen.create_oval(newCoords, fill="white", outline="white"))
-    
+    cloudList = newCloudList
         
 
     # For Buildings
@@ -211,10 +218,10 @@ for f in range(1000000):
 
 
     
-    if f % 20 == 0:
-        x += 1
-    print(x)
-    person = drawRunner([350, 350] , x % 5)
+    # if f % 5 == 0:
+    #     x += 1
+    # print(x)
+    # runners.append(drawRunner([350 + x, 350] , x % 6))
 
     
     
@@ -244,15 +251,17 @@ for f in range(1000000):
     
     for cloud in renderClouds:
         screen.delete(cloud)
-    
     for building in renderBuildings:
         screen.delete(building)
-        
+    building = []
     for line in renderLines:
         screen.delete(line)
-    for component in person:
-        screen.delete(component)
-    
+    line = []
+    for runner in runners:
+        for component in runner:
+            screen.delete(component)
+    runners = []
+        
     
     
     
