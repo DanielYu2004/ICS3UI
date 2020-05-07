@@ -133,7 +133,7 @@ for f in range (1000):
         x[i] = x2
         y[i] = y2
             
-
+screen.mainloop()
 
 
 
